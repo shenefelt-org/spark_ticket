@@ -48,10 +48,16 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
-gem 'tty-table'
-gem 'tty'
-gem 'tty-progressbar'
-gem 'httparty'
-gem 'pastel'
-gem 'google_drive'
-gem 'tty-prompt' 
+gem "tty-table"
+gem "tty"
+gem "tty-progressbar"
+gem "httparty"
+gem "pastel"
+gem "google_drive"
+gem "tty-prompt"
+gem "rack-cors"
+gem "dotenv"
+gem "googleauth"
+gem "google-apis-gmail_v1"
+gem "google-apis-sheets_v4"
+gem "google-apis-calendar_v3"

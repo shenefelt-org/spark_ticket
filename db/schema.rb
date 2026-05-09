@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_08_211651) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_09_192451) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -19,9 +19,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_08_211651) do
     t.datetime "created_at", null: false
     t.string "ip_address"
     t.string "level"
+    t.text "message"
     t.string "method"
     t.string "path"
     t.datetime "updated_at", null: false
+    t.boolean "uploaded"
   end
 
   create_table "teches", force: :cascade do |t|

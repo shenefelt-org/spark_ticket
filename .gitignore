@@ -32,3 +32,4 @@
 /config/*.key
 
 /config/google_credentials.json
+.env

@@ -8,4 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Ticket.create()
+Tech.create(
+  first_name: "Dummy",
+  last_name: "Tech",
+  role: "Developer",
+  employee_id: 101020010,
+)

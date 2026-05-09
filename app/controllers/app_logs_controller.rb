@@ -4,7 +4,14 @@ class AppLogsController < ApplicationController
   # GET /app_logs
   def index
     @app_logs = AppLog.all
-
+    log = AppLog.create!(
+      level: "INFO",
+      method: request.method,
+      path: request.path,
+      agent: request.user_agent,
+      ip_address: request.remote_ip
+    )
+    GoogleSheetsService.update_puma_log(datum: log, source: "AppLogs Index Access")
     render json: @app_logs
   end
 

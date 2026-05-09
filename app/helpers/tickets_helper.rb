@@ -19,5 +19,14 @@ module TicketsHelper
     # Render the table
     puts table.render(:unicode)
   end
+
+  def update_ticket(ticket_id: nil, param: nil)
+    return nil if ticket_id.nil? || param.nil?
+
+    ticket = Ticket.find_by(id: ticket_id)
+    return nil if ticket.nil?
+
+    ticket.update(param)
+  end
 end
 
