@@ -2,17 +2,14 @@ require "google_drive"
 require "dotenv"
 Dotenv.load
 class GoogleSheetsService
-  @spreadsheet_id = ENV["SPARK_SHEET_ID"]
   @session = GoogleDrive::Session.from_service_account_key(ENV["SERVICE_ACCOUNT_KEY"])
-  @sheet = @session.spreadsheet_by_key(@spreadsheet_id)
+  @sheet = @session.spreadsheet_by_key(ENV["SPARK_SHEET_ID"])
 
   def self.update_sheet(datum: nil, source: "PUSH")
     return nil if datum.nil?
 
-    session = GoogleDrive::Session.from_service_account_key("config/google_credentials.json")
-    sheet = session.spreadsheet_by_key(@spreadsheet_id)
-    worksheet = sheet.worksheets.first
-    app_log = sheet.worksheets.second
+    worksheet = @sheet.worksheets.first
+    return nil if worksheet.nil?
 
     worksheet.insert_rows(
       worksheet.num_rows + 1,
@@ -62,5 +59,16 @@ class GoogleSheetsService
 
     worksheet.save
     sleep(0.1)
+  end
+
+  def self.get_row_by_id(id)
+    worksheet = @sheet.worksheets.first
+    return nil if worksheet.nil?
+
+    (1..worksheet.num_rows).each do |row|
+      return worksheet.rows(row) if worksheet[row, 1] == id.to_s
+    end
+
+    nil
   end
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ticket_responses
   resources :teches
   resources :tickets
   resources :app_logs

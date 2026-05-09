@@ -37,7 +37,7 @@ class TicketsController < ApplicationController
   # PATCH/PUT /tickets/1
   def update
     if @ticket.update(ticket_params)
-      render json: @ticket.as_json(include: :teches)
+      render json: @ticket
     else
       render json: @ticket.errors, status: :unprocessable_content
     end
