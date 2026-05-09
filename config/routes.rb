@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  post 'google_sheets_webhook', to: 'google_sheets_service#receive'
 end
